@@ -4,46 +4,46 @@ from os import system, name
 
 DICE_ART = {
     1: (
-        "┌──────┐",
+        "┌───────┐",
         "│       │",
         "│   ●   │",
         "│       │",
-        "└──────┘",
+        "└───────┘",
     ),
     2: (
-        "┌──────┐",
+        "┌───────┐",
         "│ ●     │",
         "│       │",
         "│     ● │",
-        "└──────┘",
+        "└───────┘",
     ),
     3: (
-        "┌──────┐",
+        "┌───────┐",
         "│ ●     │",
         "│   ●   │",
         "│     ● │",
-        "└──────┘",
+        "└───────┘",
     ),
     4: (
-        "┌──────┐",
+        "┌───────┐",
         "│ ●   ● │",
         "│       │",
         "│ ●   ● │",
-        "└──────┘",
+        "└───────┘",
     ),
     5: (
-        "┌──────┐",
+        "┌───────┐",
         "│ ●   ● │",
         "│   ●   │",
         "│ ●   ● │",
-        "└──────┘",
+        "└───────┘",
     ),
     6: (
-        "┌──────┐",
+        "┌───────┐",
         "│ ●   ● │",
         "│ ●   ● │",
         "│ ●   ● │",
-        "└──────┘",
+        "└───────┘",
     ),
 }
 DIE_HEIGHT = len(DICE_ART[1])
@@ -84,6 +84,9 @@ def roll_1D6():
     
 def roll_2D6():
     return diceRoll(2,12)
+    
+def roll_XDX(max_no):
+    return diceRoll(1,max_no)
 
 def clear():
  
@@ -94,3 +97,12 @@ def clear():
     # for mac and linux(here, os.name is 'posix')
     else:
         _ = system('clear')
+
+def print_page_header():
+    clear()
+    print(f"\t\t2D6 Dungeon Tools")
+    print()
+    
+def print_page_footer():
+    print()
+    input("Press Enter key to continue")

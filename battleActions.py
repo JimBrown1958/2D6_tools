@@ -2,30 +2,35 @@
 import Dice as D
 
 def attackHero(battleRound, extraShift):
-    pd = D.roll_1D6()
-    sd = D.roll_1D6()
-    D.clear()
-    print("Combat round:", battleRound, "Additional shift:", extraShift)
-
-    print("You attack with a Primary:", pd, "and a Secondary:", sd)
+    pd = D.roll_XDX(6)
+    sd = D.roll_XDX(6)
+    D.print_page_header()
+    print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
+    print()
+    print("You attack with:")
+    dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
+    print(f"\n{dice_face_diagram}")
+    print()
     if battleRound >= 7:
         print("Ignore all movement interupts for enemy")
-
+        print()
     if pd == 1 and sd == 1:
         print("You made a mishap roll and completely miss the enemy")
+        print()
     if pd == 6 and sd == 6:
         print("You made a Prime attack and can use any attack and not miss")
-    
+        print()
     print("If enemy is still alive, they attack next")
 
 def attackEnemy(battleRound, extraShift):
-    pd = D.roll_1D6()
-    sd = D.roll_1D6()
-    D.clear()
-    print("Combat round:", battleRound, "Additional shift:", extraShift)
-
-    print("Enemy attacks with a Primary:",pd , "and a Secondary:", sd)
-    
+    pd = D.roll_XDX(6)
+    sd = D.roll_XDX(6)
+    D.print_page_header()
+    print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
+    print()
+    print("Enemy attacks with")
+    dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
+    print(f"\n{dice_face_diagram}")
     if pd == 1 and sd == 1:
         print("Your enemy made a mishap roll and completely missed you")
     if pd == 6 and sd == 6:
@@ -33,35 +38,52 @@ def attackEnemy(battleRound, extraShift):
         print("follow the Prime Attck instructions on enemy card")
 
 def actionPotion(battleRound, extraShift):
-    D.clear()
-    print("Combat round:", battleRound, "Additional shift:", extraShift)
+    D.print_page_header()
+    print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
+    print()
     if battleRound >= 7:
+        print()
         print("Ignore all movement interupts for enemy")
+        print()
     print("You quaff the Magic Potion ...")
     print("You have consumed the potion")
+    print()
     print("If enemy still alive, they attack next")
     
 def actionScroll(battleRound, extraShift):
-    D.clear()
-    print("Combat round:", battleRound, "Additional shift:", extraShift)
+    D.print_page_header()
+    print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
+    print()
     if battleRound >= 7:
+        print()
         print("Ignore all movement interupts for enemy")
     print("You read the magic scroll ...")
-    print("Primary",D.roll_1D6(),"Secondary", D.roll_1D6())
+    pd = D.roll_XDX(6)
+    sd = D.roll_XDX(6)
+    dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
+    print(f"\n{dice_face_diagram}")
+    print()
     print("Your scroll disappears into dust")
     print("You gain 5xp")
+    print()
     print("If enemy still alive, they attack next")
     
 def throwWeapon():
-    D.clear()
+    D.print_page_header()
     print("Throw weapon ...",)
-    print("Primary",D.roll_1D6(),"Secondary", D.roll_1D6())
-    lostWeapon = D.roll_1D6()
+    pd = D.roll_XDX(6)
+    sd = D.roll_XDX(6)    
+    dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
+    print(f"\n{dice_face_diagram}")
+    lostWeapon = D.roll_XDX(6)
+    dice_face_diagram = D.generate_dice_faces_diagram([lostWeapon],"Retrieve weapon?")
+    print(f"\n{dice_face_diagram}")
     if lostWeapon >= 1 and lostWeapon <= 3:
         print("Your weapon flies off into the dungeon and is lost")
     else:
         print("You successfully retrieve your weapon from the ground")
-    print("You can now attack the enemy")
+    print()
+    print("If the enemy is still alive, you can now engage them in combat")
 
 
 def battleMenu():
@@ -73,24 +95,24 @@ def battleMenu():
     weaponThrown = 0
     
     while True:
-        D.clear()
+        D.print_page_header()
         # Print menu ang get option
-        print("Battle Menu")
-        print("===========")
+        print(f"\t\t\tBattle Menu")
+        print(f"\t\t\t===========")
         print()
-        print("Combat round:", battleRound, "Additional shift:", extraShift)
+        print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
         print()
-        print("Select option for battle:")
-        print("1: Roll for Hero attack (this starts a new round)")
-        print("2: Roll for Enemy attack")
-        print("3: Quaff Magic potion")
+        print(f"\t1: Roll for Hero attack (this starts a new round)")
+        print(f"\t2: Roll for Enemy attack")
+        print(f"\t3: Quaff Magic potion")
         if scrollUsed == 0 and battleRound == 0:
-            print("4: Use Magic Scroll, only available when 'Combat round' = 0. Uses up 1st combat round")
+            print(f"\t4: Use Magic Scroll, only available when 'Combat round' is 0. Uses up 1st combat round")
         if weaponThrown == 0 and battleRound == 0:
-            print("5: Throw weapon, only available when 'Combat round' = 0. Does not use up a combat round")
+            print(f"\t5: Throw weapon, only available when 'Combat round' is 0. Does not use up a combat round")
         print()
-        print("0: return to top menu")
-        battleOption = input("? ")
+        print(f"\t0: return to top menu")
+        print()
+        battleOption = input("\tSelect battle option: ")
         
         # Process option selected
         if battleOption == "1":
@@ -127,4 +149,4 @@ def battleMenu():
            print("Not a valid option, please try again")
         
         
-        input("Press Enter key to continue")
+        D.print_page_footer()
