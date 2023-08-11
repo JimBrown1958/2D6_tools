@@ -14,8 +14,8 @@ while chooseRoll != "0":
     print(f"\t3: 2D6")
     print(f"\t4: D66")
     print(f"\t5: XDX, select the number of dice to be thrown and max number on dice")
-    print(f"\t6: Battle Menu")
-    print(f"\t7: Create Room")
+    print(f"\t6: Create Menu")
+    print(f"\t7: Battle Room")
     print()
     print()
     print(f"\t0: Quit")
@@ -74,9 +74,9 @@ while chooseRoll != "0":
         print("The total of all dice rolled is", dice_total)
         D.print_page_footer()
     elif chooseRoll == "6":
-        bA.battleMenu()
-    elif chooseRoll == "7":
         aR.createRoom()
+    elif chooseRoll == "7":
+        bA.battleMenu()
     elif chooseRoll == "0":
         print("Bye")
         break
