@@ -57,36 +57,37 @@ def clearDice():
 	pygame.display.update()
 
 while True:
-	for event in GAME_EVENTS.get():
-		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_ESCAPE:
-				quitGame()
-			if event.key == pygame.K_r:
-				clearDice()
-				Firstdice = random.randint(1,6)
-				Seconddice = random.randint(1,6)
-				if Firstdice == 1:					
-					dice1(die1)
-				elif Firstdice == 2:
-					dice2(die1)
-				elif Firstdice == 3:					
-					dice3(die1)
-				elif Firstdice == 4:					
-					dice4(die1)
-				elif Firstdice == 5:					
-					dice5(die1)
-				elif Firstdice == 6:					
-					dice6(die1)
-				if Seconddice == 1:					
-					dice1(die2)
-				elif Seconddice == 2:					
-					dice2(die2)
-				elif Seconddice == 3:					
-					dice3(die2)
-				elif Seconddice == 4:					
-					dice4(die2)
-				elif Seconddice == 5:					
-					dice5(die2)
-				elif Seconddice == 6:					
-					dice6(die2)
-	pygame.display.update()
+    for event in GAME_EVENTS.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                quitGame()
+            if event.key == pygame.K_r:
+                clearDice()
+                Firstdice = random.randint(1,6)
+                Seconddice = random.randint(1,6)
+                print("dice1: ", Firstdice, "dice2: ", Seconddice)
+                if Firstdice == 1:					
+                    dice1(die1)
+                elif Firstdice == 2:
+                    dice2(die1)
+                elif Firstdice == 3:					
+                    dice3(die1)
+                elif Firstdice == 4:					
+                    dice4(die1)
+                elif Firstdice == 5:					
+                    dice5(die1)
+                elif Firstdice == 6:					
+                    dice6(die1)
+                if Seconddice == 1:					
+                    dice1(die2)
+                elif Seconddice == 2:					
+                    dice2(die2)
+                elif Seconddice == 3:					
+                    dice3(die2)
+                elif Seconddice == 4:					
+                    dice4(die2)
+                elif Seconddice == 5:					
+                    dice5(die2)
+                elif Seconddice == 6:					
+                    dice6(die2)
+    pygame.display.update()
