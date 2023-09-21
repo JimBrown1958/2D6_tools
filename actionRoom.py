@@ -44,7 +44,7 @@ def createRoom():
     print()
     print("Room Size:")
     dice_face_diagram = D.generate_dice_faces_diagram([x_dim,y_dim],"    X         Y    ")
-    print(f"\n{dice_face_diagram}")
+    print(f"{dice_face_diagram}")
    
    # Check for a double roll less than 6 + 6
     if x_dim < 6:
@@ -56,7 +56,7 @@ def createRoom():
             y_dim += y_dim2
             print("You rolled a double, so dice rolled again and added to previous roll")
             dice_face_diagram = D.generate_dice_faces_diagram([x_dim2,y_dim2],"    X         Y     ")
-            print(f"\n{dice_face_diagram}")
+            print(f"{dice_face_diagram}")
     
     # Check for a corridor
     if x_dim == 1 or y_dim == 1:
@@ -74,23 +74,28 @@ def createRoom():
         return
     print("The room is: X:", x_dim, "wide by Y:", y_dim,"deep")
     print()
+    print()
     room_size = x_dim * y_dim
     print("The room type is:")
     pd = D.roll_XDX(6)
     sd = D.roll_XDX(6)
-    dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
-    print(f"\n{dice_face_diagram}")
+    room_type_entry = pd + sd
     if room_size <= 6:
-        print("Check the 'Small Room' table for this level")
+        dice_face_diagram = D.generate_dice_faces_diagram([pd,sd],"                   ")
+        print(f"{dice_face_diagram}")
+        print("Check entry", room_type_entry, "in the 'Small Room' table for this level")
     elif room_size >= 32:
-        print("Check the 'Large Room' table for this level")
+        dice_face_diagram = D.generate_dice_faces_diagram([pd,sd],"                   ")
+        print(f"{dice_face_diagram}")
+        print("Check entry", room_type_entry, "in the 'Large Room' table for this level")
     else:
+        dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
+        print(f"{dice_face_diagram}")
         print("Check the 'Level Room' table")
     print()
     exitNumber = roll_Exits()
     if exitNumber > 0:
         print("This room has a maximum of", exitNumber, "exits")
-    print()
     if room_size <= 6:
         if exitNumber > 0:
             print("All exits are open archways")
