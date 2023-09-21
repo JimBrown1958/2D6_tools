@@ -35,7 +35,7 @@ def attackEnemy(battleRound, extraShift):
         print("Your enemy made a mishap roll and completely missed you")
     if pd == 6 and sd == 6:
         print("Your enemy made a Prime attack,")
-        print("follow the Prime Attck instructions on enemy card")
+        print("follow the Prime Attack instructions on enemy card")
 
 def actionPotion(battleRound, extraShift):
     D.print_page_header()
@@ -75,6 +75,10 @@ def throwWeapon():
     sd = D.roll_XDX(6)    
     dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
     print(f"\n{dice_face_diagram}")
+    print("On a successful throw the following apply:")
+    print("Throwing Axes do 6 damage")
+    print("Throwing knives do 4 damage")
+    print("Throwing darts do 2 damage")
     lostWeapon = D.roll_XDX(6)
     dice_face_diagram = D.generate_dice_faces_diagram([lostWeapon],"Retrieve weapon?")
     print(f"\n{dice_face_diagram}")
