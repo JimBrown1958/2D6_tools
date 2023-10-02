@@ -73,20 +73,54 @@ def generate_dice_faces_diagram(dice_values, dice_text):
     dice_faces_diagram = "\n".join([diagram_header] + dice_faces_rows)
     return dice_faces_diagram
 
-def diceRoll(lo, hi):
-    return r.randint(lo,hi)
-        
-def roll_1D3():
-    return diceRoll(1,3)
-            
-def roll_1D6():
-    return diceRoll(1,6)
+def diceRoll(hi):
+    return r.randint(1,hi)
+           
+def d1x6Throw():
+    print("Rolling 1D6 ...")
+    pd = diceRoll(6)
+    dice_face_diagram = generate_dice_faces_diagram([pd],"   1D6   ")
+    print(f"\n{dice_face_diagram}")
     
-def roll_2D6():
-    return diceRoll(2,12)
+def d2x6Throw():
+    print("Rolling 2D6 ...")
+    dice_total = 0
+    current_dice_value = 0
+    no_of_dice = 2
+    max_dice = 6
+    for i in range(no_of_dice):
+        current_dice_value = diceRoll(max_dice)
+        print("Dice",i+1,":", current_dice_value)
+        dice_total += current_dice_value
+        dice_face_diagram = generate_dice_faces_diagram([current_dice_value],"         ")
+        print(f"{dice_face_diagram}")
+    print("The total of this 2D6 roll is", dice_total)
     
-def roll_XDX(max_no):
-    return diceRoll(1,max_no)
+def d1x3Throw():
+    print("Rolling 1D3 ...")
+    pd = diceRoll(3)
+    dice_face_diagram = generate_dice_faces_diagram([pd],"   1D3   ")
+    print(f"\n{dice_face_diagram}")
+    
+def d66Throw():
+    print("Rolling D66 ...")
+    pd = diceRoll(6)
+    sd = diceRoll(6)
+    dice_face_diagram = generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
+    print(f"\n{dice_face_diagram}")
+    
+def multiThrow():
+    print(f"\t\tSelect dice to roll")
+    print()
+    dice_total = 0
+    current_dice_value = 0
+    no_of_dice = int(input("Enter the number of dice you want to throw? "))
+    max_dice = int(input("How many sides do these dice have? "))
+    for i in range(no_of_dice):
+        current_dice_value = diceRoll(max_dice)
+        print("Dice",i+1,":", current_dice_value)
+        dice_total += current_dice_value
+    print("The total of all dice rolled is", dice_total)
 
 def clear():
  
@@ -106,3 +140,4 @@ def print_page_header():
 def print_page_footer():
     print()
     input("Press Enter key to continue")
+

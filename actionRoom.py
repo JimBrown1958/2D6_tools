@@ -2,7 +2,7 @@
 import Dice as D
 
 def roll_Exits():
-    exitDiceRoll = D.roll_XDX(6)
+    exitDiceRoll = D.diceRoll(6)
     dice_face_diagram = D.generate_dice_faces_diagram([exitDiceRoll],"Exit Roll")
     print(f"\n{dice_face_diagram}")
     if exitDiceRoll == 1:
@@ -15,7 +15,7 @@ def roll_Exits():
         return 3
 
 def lockedDoor():
-    lockeddoorDice = D.roll_XDX(6)
+    lockeddoorDice = D.diceRoll(6)
     dice_face_diagram = D.generate_dice_faces_diagram([lockeddoorDice],"Locked status")
     print(f"\n{dice_face_diagram}")
 
@@ -35,8 +35,8 @@ def createRoom():
     y_dim = "0"
     room_size = 0
     
-    x_dim = D.roll_XDX(6)
-    y_dim = D.roll_XDX(6)
+    x_dim = D.diceRoll(6)
+    y_dim = D.diceRoll(6)
     
     D.print_page_header()    
     print(f"\t\t\tRoom creation")
@@ -50,8 +50,8 @@ def createRoom():
     if x_dim < 6:
         if x_dim == y_dim:
             # Got a double less than 6 + 6
-            x_dim2 = D.roll_XDX(6)
-            y_dim2 = D.roll_XDX(6)
+            x_dim2 = D.diceRoll(6)
+            y_dim2 = D.diceRoll(6)
             x_dim += x_dim2
             y_dim += y_dim2
             print("You rolled a double, so dice rolled again and added to previous roll")
@@ -77,8 +77,8 @@ def createRoom():
     print()
     room_size = x_dim * y_dim
     print("The room type is:")
-    pd = D.roll_XDX(6)
-    sd = D.roll_XDX(6)
+    pd = D.diceRoll(6)
+    sd = D.diceRoll(6)
     room_type_entry = pd + sd
     if room_size <= 6:
         dice_face_diagram = D.generate_dice_faces_diagram([pd,sd],"                   ")

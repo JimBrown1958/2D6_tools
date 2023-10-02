@@ -9,13 +9,13 @@ while chooseRoll != "0":
     print(f"\t\t\tMain Menu")
     print(f"\t\t\t=========")
     print()
-    print(f"\t1: 1D3")
-    print(f"\t2: 1D6")
-    print(f"\t3: 2D6")
+    print(f"\t1: 1D6")
+    print(f"\t2: 2D6")
+    print(f"\t3: 1D3")
     print(f"\t4: D66")
     print(f"\t5: XDX, select the number of dice to be thrown and max number on dice")
     print(f"\t6: Create Room")
-    print(f"\t7: Battle Menu")
+    print(f"\t7: Start Battle!")
     print()
     print()
     print(f"\t0: Quit")
@@ -24,54 +24,23 @@ while chooseRoll != "0":
 
     if chooseRoll == "1":
         D.print_page_header()
-        print("Rolling 1D3 ...")
-        pd = D.roll_XDX(3)
-        dice_face_diagram = D.generate_dice_faces_diagram([pd],"   1D3   ")
-        print(f"\n{dice_face_diagram}")
+        D.d1x6Throw()
         D.print_page_footer()
     elif chooseRoll == "2":
         D.print_page_header()
-        print("Rolling 1D6 ...")
-        pd = D.roll_XDX(6)
-        dice_face_diagram = D.generate_dice_faces_diagram([pd],"   1D6   ")
-        print(f"\n{dice_face_diagram}")
+        D.d2x6Throw()
         D.print_page_footer()
     elif chooseRoll == "3":
         D.print_page_header()
-        print("Rolling 2D6 ...")
-        dice_total = 0
-        current_dice_value = 0
-        no_of_dice = 2
-        max_dice = 6
-        for i in range(no_of_dice):
-            current_dice_value = D.roll_XDX(max_dice)
-            print("Dice",i+1,":", current_dice_value)
-            dice_total += current_dice_value
-            dice_face_diagram = D.generate_dice_faces_diagram([current_dice_value],"         ")
-            print(f"{dice_face_diagram}")
-        print("The total of this 2D6 roll is", dice_total)
-        D.print_page_footer()
+        D.d1x3Throw()
+        D.print_page_footer()        
     elif chooseRoll == "4":
         D.print_page_header()
-        print("Rolling D66 ...")
-        pd = D.roll_XDX(6)
-        sd = D.roll_XDX(6)
-        dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
-        print(f"\n{dice_face_diagram}")
+        D.d66Throw()
         D.print_page_footer()
     elif chooseRoll == "5":
         D.print_page_header()
-        print(f"\t\tSelect dice to roll")
-        print()
-        dice_total = 0
-        current_dice_value = 0
-        no_of_dice = int(input("Enter the number of dice you want to throw? "))
-        max_dice = int(input("How many sides do these dice have? "))
-        for i in range(no_of_dice):
-            current_dice_value = D.roll_XDX(max_dice)
-            print("Dice",i+1,":", current_dice_value)
-            dice_total += current_dice_value
-        print("The total of all dice rolled is", dice_total)
+        D.multiThrow()
         D.print_page_footer()
     elif chooseRoll == "6":
         aR.createRoom()

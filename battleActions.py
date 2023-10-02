@@ -2,8 +2,8 @@
 import Dice as D
 
 def attackHero(battleRound, extraShift):
-    pd = D.roll_XDX(6)
-    sd = D.roll_XDX(6)
+    pd = D.diceRoll(6)
+    sd = D.diceRoll(6)
     D.print_page_header()
     print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
     print()
@@ -23,8 +23,8 @@ def attackHero(battleRound, extraShift):
     print("If enemy is still alive, they attack next")
 
 def attackEnemy(battleRound, extraShift):
-    pd = D.roll_XDX(6)
-    sd = D.roll_XDX(6)
+    pd = D.diceRoll(6)
+    sd = D.diceRoll(6)
     D.print_page_header()
     print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
     print()
@@ -58,8 +58,8 @@ def actionScroll(battleRound, extraShift):
         print()
         print("Ignore all movement interupts for enemy")
     print("You read the magic scroll ...")
-    pd = D.roll_XDX(6)
-    sd = D.roll_XDX(6)
+    pd = D.diceRoll(6)
+    sd = D.diceRoll(6)
     dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
     print(f"\n{dice_face_diagram}")
     print()
@@ -71,15 +71,15 @@ def actionScroll(battleRound, extraShift):
 def throwWeapon():
     D.print_page_header()
     print("Throw weapon ...",)
-    pd = D.roll_XDX(6)
-    sd = D.roll_XDX(6)    
+    pd = D.diceRoll(6)
+    sd = D.diceRoll(6)    
     dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
     print(f"\n{dice_face_diagram}")
     print("On a successful throw the following apply:")
     print("Throwing Axes do 6 damage")
     print("Throwing knives do 4 damage")
     print("Throwing darts do 2 damage")
-    lostWeapon = D.roll_XDX(6)
+    lostWeapon = D.diceRoll(6)
     dice_face_diagram = D.generate_dice_faces_diagram([lostWeapon],"Retrieve weapon?")
     print(f"\n{dice_face_diagram}")
     if lostWeapon >= 1 and lostWeapon <= 3:
@@ -110,9 +110,9 @@ def battleMenu():
         print(f"\t2: Roll for Enemy attack")
         print(f"\t3: Quaff Magic potion")
         if scrollUsed == 0 and battleRound == 0:
-            print(f"\t4: Use Magic Scroll, only available when 'Combat round' is 0. Uses up 1st combat round")
+            print(f"\t4: Use Magic Scroll. Uses up 1st combat round")
         if weaponThrown == 0 and battleRound == 0:
-            print(f"\t5: Throw weapon, only available when 'Combat round' is 0. Does not use up a combat round")
+            print(f"\t5: Throw weapon. Does not use up 1st combat round")
         print()
         print(f"\t0: return to top menu")
         print()
