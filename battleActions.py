@@ -1,6 +1,25 @@
 # battleActions.py
 import Dice as D
 
+def inCombatDice():
+    chooseAttackDice = ""
+    while chooseAttackDice != "0": 
+        print(f"Throw dice for a successfull hit")
+        print(f"\t1: 1D6 Combat Damage")
+        print(f"\t2: XDX Combat Damage")
+        print(f"\t0: End turn")
+        print()
+        chooseAttackDice = input("Select option for damage roll: ")
+        if chooseAttackDice == "1":
+            D.d1x6Throw()
+        elif chooseAttackDice == "2":
+            D.multiThrow()
+        elif chooseAttackDice == "0":
+            print("Combat turn ended")
+            break
+        else:
+            print("Not a valid option")
+            
 def attackHero(battleRound, extraShift):
     pd = D.diceRoll(6)
     sd = D.diceRoll(6)
@@ -20,6 +39,7 @@ def attackHero(battleRound, extraShift):
     if pd == 6 and sd == 6:
         print("You made a Prime attack and can use any attack and not miss")
         print()
+    inCombatDice()
     print("If enemy is still alive, they attack next")
 
 def attackEnemy(battleRound, extraShift):
@@ -36,6 +56,8 @@ def attackEnemy(battleRound, extraShift):
     if pd == 6 and sd == 6:
         print("Your enemy made a Prime attack,")
         print("follow the Prime Attack instructions on enemy card")
+    inCombatDice()
+        
 
 def actionPotion(battleRound, extraShift):
     D.print_page_header()
@@ -63,6 +85,14 @@ def actionScroll(battleRound, extraShift):
     dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
     print(f"\n{dice_face_diagram}")
     print()
+    if pd == sd:
+        print("Your roll was successfull however check to see if this scroll has a 'Dispel Double' in scroll table")
+        print()    
+        if pd == 1:
+            print("... but unfortunately the scroll will only do half damage, if it is a combat scroll")
+        if pd == 6:
+            print("... but luckily this scroll will do double damage, if it is a combat scroll") 
+    Print()
     print("Your scroll disappears into dust")
     print("You gain 5xp")
     print()
@@ -89,7 +119,6 @@ def throwWeapon():
     print()
     print("If the enemy is still alive, you can now engage them in combat")
 
-
 def battleMenu():
     battleRound = 0
     extraShift = 0
@@ -114,7 +143,7 @@ def battleMenu():
         if weaponThrown == 0 and battleRound == 0:
             print(f"\t5: Throw weapon. Does not use up 1st combat round")
         print()
-        print(f"\t0: return to top menu")
+        print(f"\t0: End Battle")
         print()
         battleOption = input("\tSelect battle option: ")
         
@@ -134,6 +163,7 @@ def battleMenu():
                 extraShift += 1
             actionPotion(battleRound, extraShift)
             potionUsed += 1
+            D.print_page_footer()
 
         elif battleOption =="4" and scrollUsed == 0 and battleRound == 0:
             battleRound += 1
@@ -141,10 +171,12 @@ def battleMenu():
                 extraShift += 1
             actionScroll(battleRound, extraShift)
             scrollUsed +=1
+            D.print_page_footer()
 
         elif battleOption == "5" and weaponThrown == 0 and battleRound == 0:
             throwWeapon()
             weaponThrown += 1
+            D.print_page_footer()
             
         elif battleOption == "0":
             break
@@ -153,4 +185,4 @@ def battleMenu():
            print("Not a valid option, please try again")
         
         
-        D.print_page_footer()
+        
