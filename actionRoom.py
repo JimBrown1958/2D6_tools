@@ -96,12 +96,17 @@ def createRoom():
     exitNumber = roll_Exits()
     if exitNumber > 0:
         print("This room has a maximum of", exitNumber, "exits")
+        print("")
     if room_size <= 6:
         if exitNumber > 0:
             print("All exits are open archways")
     else:
         if exitNumber > 0:
-            print("Check the room table for room type exits")
+            print("Check the room table for room type exits.")
+            print("If room type exit is random, check exit type table for:")
+            print("")
+            dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
+            print(f"{dice_face_diagram}")            
             print("")
             lockedDoor()
         else:
