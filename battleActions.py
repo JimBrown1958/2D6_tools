@@ -3,22 +3,23 @@ import Dice as D
 
 def inCombatDice():
     chooseAttackDice = ""
-    while chooseAttackDice != "0": 
+    while chooseAttackDice != "0":
         print(f"Throw dice for a successfull hit")
         print(f"\t1: 1D6 Combat Damage")
         print(f"\t2: XDX Combat Damage")
         print(f"\t0: End turn")
         print()
         chooseAttackDice = input("Select option for damage roll: ")
-        if chooseAttackDice == "1":
-            D.d1x6Throw()
-        elif chooseAttackDice == "2":
-            D.multiThrow()
-        elif chooseAttackDice == "0":
-            print("Combat turn ended")
-            break
-        else:
-            print("Not a valid option")
+        match chooseAttackDice:
+            case "1":
+                D.d1x6Throw()
+            case "2":
+                D.multiThrow()
+            case "0":
+                print("Combat turn ended")
+                break
+            case _:
+                print("Not a valid option")
             
 def attackHero(battleRound, extraShift):
     pd = D.diceRoll(6)
@@ -92,7 +93,7 @@ def actionScroll(battleRound, extraShift):
             print("... but unfortunately the scroll will only do half damage, if it is a combat scroll")
         if pd == 6:
             print("... but luckily this scroll will do double damage, if it is a combat scroll") 
-    Print()
+    print()
     print("Your scroll disappears into dust")
     print("You gain 5xp")
     print()
@@ -148,41 +149,41 @@ def battleMenu():
         battleOption = input("\tSelect battle option: ")
         
         # Process option selected
-        if battleOption == "1":
-            battleRound += 1
-            if battleRound >= 4 and battleRound <= 6:
-                extraShift += 1
-            attackHero(battleRound, extraShift)
+        match battleOption:
+            case "1":
+                battleRound += 1
+                if battleRound >= 4 and battleRound <= 6:
+                    extraShift += 1
+                attackHero(battleRound, extraShift)
 
-        elif battleOption == "2":
-            attackEnemy(battleRound, extraShift)
+            case "2":
+                attackEnemy(battleRound, extraShift)
             
-        elif battleOption == "3":
-            battleRound += 1
-            if battleRound >= 4 and battleRound <= 6:
-                extraShift += 1
-            actionPotion(battleRound, extraShift)
-            potionUsed += 1
-            D.print_page_footer()
+            case "3":
+                battleRound += 1
+                if battleRound >= 4 and battleRound <= 6:
+                    extraShift += 1
+                actionPotion(battleRound, extraShift)
+                potionUsed += 1
+                D.print_page_footer()
 
-        elif battleOption =="4" and scrollUsed == 0 and battleRound == 0:
-            battleRound += 1
-            if battleRound >= 4 and battleRound <= 6:
-                extraShift += 1
-            actionScroll(battleRound, extraShift)
-            scrollUsed +=1
-            D.print_page_footer()
+            case "4":
+                if scrollUsed == 0 and battleRound == 0:
+                    battleRound += 1
+                    if battleRound >= 4 and battleRound <= 6:
+                        extraShift += 1
+                    actionScroll(battleRound, extraShift)
+                    scrollUsed +=1
+                    D.print_page_footer()
 
-        elif battleOption == "5" and weaponThrown == 0 and battleRound == 0:
-            throwWeapon()
-            weaponThrown += 1
-            D.print_page_footer()
+            case "5":
+                if weaponThrown == 0 and battleRound == 0:
+                    throwWeapon()
+                    weaponThrown += 1
+                    D.print_page_footer()
             
-        elif battleOption == "0":
-            break
+            case "0":
+                break
             
-        else:
-           print("Not a valid option, please try again")
-        
-        
-        
+            case _:
+               print("Not a valid option, please try again")
