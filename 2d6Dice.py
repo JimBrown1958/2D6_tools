@@ -22,32 +22,34 @@ while chooseRoll != "0":
     print()
     chooseRoll = input("\tSelect option for dice roll: ")
 
-    if chooseRoll == "1":
-        D.print_page_header()
-        D.d1x6Throw()
-        D.print_page_footer()
-    elif chooseRoll == "2":
-        D.print_page_header()
-        D.d2x6Throw()
-        D.print_page_footer()
-    elif chooseRoll == "3":
-        D.print_page_header()
-        D.d1x3Throw()
-        D.print_page_footer()        
-    elif chooseRoll == "4":
-        D.print_page_header()
-        D.d66Throw()
-        D.print_page_footer()
-    elif chooseRoll == "5":
-        D.print_page_header()
-        D.multiThrow()
-        D.print_page_footer()
-    elif chooseRoll == "6":
-        aR.createRoom()
-    elif chooseRoll == "7":
-        bA.battleMenu()
-    elif chooseRoll == "0":
-        print("Bye")
-        break
-    else:
-        print("Not a valid option")
+    match chooseRoll:
+        case "1":
+            D.print_page_header()
+            D.d1x6Throw()
+            D.print_page_footer()
+        case "2":
+            D.print_page_header()
+            D.d2x6Throw()
+            D.print_page_footer()
+        case "3":
+            D.print_page_header()
+            D.d1x3Throw()
+            D.print_page_footer()
+        case "4":
+            D.print_page_header()
+            D.d66Throw()
+            D.print_page_footer()
+        case "5":
+            D.print_page_header()
+            D.multiThrow()
+            D.print_page_footer()
+        case "6":
+            aR.createRoom()
+        case "7":
+            bA.battleMenu()
+        case "0":
+            print("Bye")
+            break
+        case _:
+            print("Not a valid option")
+            
