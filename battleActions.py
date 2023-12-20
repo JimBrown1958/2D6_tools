@@ -25,7 +25,7 @@ def attackHero(battleRound, extraShift):
     pd = D.diceRoll(6)
     sd = D.diceRoll(6)
     D.print_page_header()
-    print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
+    print(f"\tCombat round: {battleRound} Additional shift: {extraShift}")
     print()
     print("You attack with:")
     dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
@@ -47,7 +47,7 @@ def attackEnemy(battleRound, extraShift):
     pd = D.diceRoll(6)
     sd = D.diceRoll(6)
     D.print_page_header()
-    print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
+    print(f"\tCombat round: {battleRound} Additional shift: {extraShift}")
     print()
     print("Enemy attacks with")
     dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
@@ -62,7 +62,7 @@ def attackEnemy(battleRound, extraShift):
 
 def actionPotion(battleRound, extraShift):
     D.print_page_header()
-    print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
+    print(f"\tCombat round: {battleRound} Additional shift: {extraShift}")
     print()
     if battleRound >= 7:
         print()
@@ -75,7 +75,7 @@ def actionPotion(battleRound, extraShift):
     
 def actionScroll(battleRound, extraShift):
     D.print_page_header()
-    print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
+    print(f"\tCombat round: {battleRound} Additional shift: {extraShift}")
     print()
     if battleRound >= 7:
         print()
