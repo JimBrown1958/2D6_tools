@@ -90,11 +90,11 @@ def d2x6Throw():
     max_dice = 6
     for i in range(no_of_dice):
         current_dice_value = diceRoll(max_dice)
-        print("Dice",i+1,":", current_dice_value)
+        print(f"Dice {i+1}: {current_dice_value}")
         dice_total += current_dice_value
         dice_face_diagram = generate_dice_faces_diagram([current_dice_value],"         ")
         print(f"{dice_face_diagram}")
-    print("The total of this 2D6 roll is", dice_total)
+    print(f"The total of this 2D6 roll is {dice_total}")
     
 def d1x3Throw():
     print("Rolling 1D3 ...")
@@ -118,9 +118,9 @@ def multiThrow():
     max_dice = int(input("How many sides do these dice have? "))
     for i in range(no_of_dice):
         current_dice_value = diceRoll(max_dice)
-        print("Dice",i+1,":", current_dice_value)
+        print(f"Dice {i+1}: {current_dice_value}")
         dice_total += current_dice_value
-    print("The total of all dice rolled is", dice_total)
+    print(f"The total of all dice rolled is {dice_total}")
 
 def clear():
  
