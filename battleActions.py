@@ -134,7 +134,7 @@ def battleMenu():
         print(f"\t\t\tBattle Menu")
         print(f"\t\t\t===========")
         print()
-        print(f"\tCombat round:", battleRound, "Additional shift:", extraShift)
+        print(f"\tCombat round: {battleRound} Additional shift: {extraShift}")
         print()
         print(f"\t1: Roll for Hero attack (this starts a new round)")
         print(f"\t2: Roll for Enemy attack")
