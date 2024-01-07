@@ -61,18 +61,18 @@ def createRoom():
     # Check for a corridor
     if x_dim == 1 or y_dim == 1:
         print("You have rolled a corridor,") 
-        print("that is X: {x_dim} wide and Y: {y_dim} deep")
+        print(f"that is X: {x_dim} wide and Y: {y_dim} deep")
         
         exitNumber = roll_Exits()
         if exitNumber > 0:
-            print("There are a maximum of {exitNumber} exits off this corridor")
+            print(f"There are a maximum of {exitNumber} exits off this corridor")
             print("All exits are open archways")
             print()
         else:
             print("This is a dead end with no exits")
         D.print_page_footer()
         return
-    print("The room is: X: {x_dim} wide by Y: {y_dim} deep")
+    print(f"The room is: X: {x_dim} wide by Y: {y_dim} deep")
     print()
     print()
     room_size = x_dim * y_dim
@@ -83,11 +83,11 @@ def createRoom():
     if room_size <= 6:
         dice_face_diagram = D.generate_dice_faces_diagram([pd,sd],"                   ")
         print(f"{dice_face_diagram}")
-        print("Check entry {room_type_entry} in the 'Small Room' table for this level")
+        print(f"Check entry {room_type_entry} in the 'Small Room' table for this level")
     elif room_size >= 32:
         dice_face_diagram = D.generate_dice_faces_diagram([pd,sd],"                   ")
         print(f"{dice_face_diagram}")
-        print("Check entry {room_type_entry} in the 'Large Room' table for this level")
+        print(f"Check entry {room_type_entry} in the 'Large Room' table for this level")
     else:
         dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
         print(f"{dice_face_diagram}")
@@ -95,7 +95,7 @@ def createRoom():
     print()
     exitNumber = roll_Exits()
     if exitNumber > 0:
-        print("This room has a maximum of {exitNumber} exits")
+        print(f"This room has a maximum of {exitNumber} exits")
         print("")
     if room_size <= 6:
         if exitNumber > 0:
