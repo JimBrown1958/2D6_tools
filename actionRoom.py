@@ -16,15 +16,15 @@ def roll_Exits():
 
 def lockedDoor(door_no):
     lockeddoorDice = D.diceRoll(6)
-    door_string = "Door " + str(door_no) + " Locked status:"
+    door_string = "Door " + str(door_no) + " Lock status:"
     dice_face_diagram = D.generate_dice_faces_diagram([lockeddoorDice], door_string)
     print(f"\n{dice_face_diagram}")
 
     if lockeddoorDice == 6:
-        print("Door is locked")
+        print("All door types are locked")
         return
     if lockeddoorDice >= 1 and lockeddoorDice <= 3:
-        print("Door is unlocked")
+        print("All door types are unlocked")
         return
     if lockeddoorDice >= 4 and lockeddoorDice <= 5:
         print("Metal door is locked")
