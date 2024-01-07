@@ -14,9 +14,9 @@ def roll_Exits():
     if exitDiceRoll == 6:
         return 3
 
-def lockedDoor():
+def lockedDoor(door_no):
     lockeddoorDice = D.diceRoll(6)
-    dice_face_diagram = D.generate_dice_faces_diagram([lockeddoorDice],"Locked status")
+    dice_face_diagram = D.generate_dice_faces_diagram([lockeddoorDice],"Door {door_no} Locked status:")
     print(f"\n{dice_face_diagram}")
 
     if lockeddoorDice == 6:
@@ -109,8 +109,7 @@ def createRoom():
             print(f"{dice_face_diagram}")            
             print("")
             for locked_exit in range(exitNumber):
-                print(f"Door {locked_exit + 1} status:")
-                lockedDoor()
+                lockedDoor(locked_exit + 1)
         else:
             print("This is a dead end with no exits")
 
