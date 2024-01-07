@@ -16,7 +16,7 @@ def roll_Exits():
 
 def lockedDoor(door_no):
     lockeddoorDice = D.diceRoll(6)
-    door_string = "Door " + door_no + " Locked status:"
+    door_string = "Door " + str(door_no) + " Locked status:"
     dice_face_diagram = D.generate_dice_faces_diagram([lockeddoorDice], door_string)
     print(f"\n{dice_face_diagram}")
 
