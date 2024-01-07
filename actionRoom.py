@@ -20,15 +20,15 @@ def lockedDoor():
     print(f"\n{dice_face_diagram}")
 
     if lockeddoorDice == 6:
-        print("All doors are locked")
+        print("Door is locked")
         return
     if lockeddoorDice >= 1 and lockeddoorDice <= 3:
-        print("All doors unlocked")
+        print("Door is unlocked")
         return
     if lockeddoorDice >= 4 and lockeddoorDice <= 5:
-        print("Metal doors are locked")
+        print("Metal door is locked")
     if lockeddoorDice == 5:
-        print("Reinforced doors are locked")
+        print("Reinforced door is locked")
 
 def createRoom():
     x_dim = "0"
@@ -108,8 +108,9 @@ def createRoom():
             dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
             print(f"{dice_face_diagram}")            
             print("")
-            # add loop for door lock level
-            lockedDoor()
+            for locked_exit in range(exitNumber):
+                print(f"Door {locked_exit} status:")
+                lockedDoor()
         else:
             print("This is a dead end with no exits")
 
