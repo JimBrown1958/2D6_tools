@@ -108,7 +108,7 @@ def createRoom():
             dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
             print(f"{dice_face_diagram}")            
             print("")
-            for locked_exit in range(1,exitNumber):
+            for locked_exit in range(exitNumber+1):
                 print(f"Door {locked_exit} status:")
                 lockedDoor()
         else:
