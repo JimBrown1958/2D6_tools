@@ -71,48 +71,47 @@ def createRoom():
             print()
         else:
             print("This is a dead end with no exits")
-        D.print_page_footer()
-        return
-    print(f"The room is: X: {x_dim} wide by Y: {y_dim} deep")
-    print()
-    print()
-    room_size = x_dim * y_dim
-    print("The room type is:")
-    pd = D.diceRoll(6)
-    sd = D.diceRoll(6)
-    room_type_entry = pd + sd
-    if room_size <= 6:
-        dice_face_diagram = D.generate_dice_faces_diagram([pd,sd],"                   ")
-        print(f"{dice_face_diagram}")
-        print(f"Check entry {room_type_entry} in the 'Small Room' table for this level")
-    elif room_size >= 32:
-        dice_face_diagram = D.generate_dice_faces_diagram([pd,sd],"                   ")
-        print(f"{dice_face_diagram}")
-        print(f"Check entry {room_type_entry} in the 'Large Room' table for this level")
     else:
-        dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
-        print(f"{dice_face_diagram}")
-        print("Check the 'Level Room' table")
-    print()
-    exitNumber = roll_Exits()
-    if exitNumber > 0:
-        print(f"This room has a maximum of {exitNumber} exits")
-        print("")
-    if room_size <= 6:
-        if exitNumber > 0:
-            print("All exits are open archways")
-    else:
-        if exitNumber > 0:
-            print("Check the room table for room type exits.")
-            print("If room type exit is random, check exit type table for:")
-            print("")
-            dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
-            print(f"{dice_face_diagram}")            
-            print("")
-            for locked_exit in range(exitNumber):
-                lockedDoor(locked_exit + 1)
+        print(f"The room is: X: {x_dim} wide by Y: {y_dim} deep")
+        print()
+        print()
+        room_size = x_dim * y_dim
+        print("The room type is:")
+        pd = D.diceRoll(6)
+        sd = D.diceRoll(6)
+        room_type_entry = pd + sd
+        if room_size <= 6:
+            dice_face_diagram = D.generate_dice_faces_diagram([pd,sd],"                   ")
+            print(f"{dice_face_diagram}")
+            print(f"Check entry {room_type_entry} in the 'Small Room' table for this level")
+        elif room_size >= 32:
+            dice_face_diagram = D.generate_dice_faces_diagram([pd,sd],"                   ")
+            print(f"{dice_face_diagram}")
+            print(f"Check entry {room_type_entry} in the 'Large Room' table for this level")
         else:
-            print("This is a dead end with no exits")
+            dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
+            print(f"{dice_face_diagram}")
+            print("Check the 'Level Room' table")
+        print()
+        exitNumber = roll_Exits()
+        if exitNumber > 0:
+            print(f"This room has a maximum of {exitNumber} exits")
+            print("")
+        if room_size <= 6:
+            if exitNumber > 0:
+                print("All exits are open archways")
+        else:
+            if exitNumber > 0:
+                print("Check the room table for room type exits.")
+                print("If room type exit is random, check exit type table for:")
+                print("")
+                dice_face_diagram = D.generate_dice_faces_diagram([pd,sd]," Primary  Secondary")
+                print(f"{dice_face_diagram}")            
+                print("")
+                for locked_exit in range(exitNumber):
+                    lockedDoor(locked_exit + 1)
+            else:
+                print("This is a dead end with no exits")
 
     print()
     D.print_page_footer()
