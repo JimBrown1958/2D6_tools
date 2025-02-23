@@ -59,9 +59,9 @@ def draw_main_menu():
     title1 = font.render('2D6 Dungeon Tools', True, (255, 255, 255))
     title2 = font.render('Main Menu', True, (255, 255, 255))
     title3 = font.render('=========', True, (255, 255, 255))
-    start_button1 = font.render('1: 1D3', True, (255, 255, 255))
-    start_button2 = font.render('2: 1D6', True, (255, 255, 255))
-    start_button3 = font.render('3: 2D6', True, (255, 255, 255))
+    start_button1 = font.render('1: 1D6', True, (255, 255, 255))
+    start_button2 = font.render('2: 2D6', True, (255, 255, 255))
+    start_button3 = font.render('3: 1D3', True, (255, 255, 255))
     start_button4 = font.render('4: D66', True, (255, 255, 255))
     start_button5 = font.render('5: XDX, select the number of dice to be thrown and max number on dice', True, (255, 255, 255))
     start_button6 = font.render('6: Create room', True, (255, 255, 255))
@@ -99,7 +99,7 @@ while True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE or event.key == pygame.K_0:
                 quitGame()
-            if event.key == pygame.K_3:
+            if event.key == pygame.K_2:
                 clearDice()
                 font = pygame.font.SysFont('arial', 18)
                 title1 = font.render("Rolling 2D6 ...", True, (255, 255, 255))
@@ -109,30 +109,32 @@ while True:
                 Firstdice = random.randint(1,6)
                 Seconddice = random.randint(1,6)
                 print("dice1: ", Firstdice, "dice2: ", Seconddice)
-                if Firstdice == 1:					
-                    dice1(die1)
-                elif Firstdice == 2:
-                    dice2(die1)
-                elif Firstdice == 3:					
-                    dice3(die1)
-                elif Firstdice == 4:					
-                    dice4(die1)
-                elif Firstdice == 5:					
-                    dice5(die1)
-                elif Firstdice == 6:					
-                    dice6(die1)
-                if Seconddice == 1:					
-                    dice1(die2)
-                elif Seconddice == 2:					
-                    dice2(die2)
-                elif Seconddice == 3:					
-                    dice3(die2)
-                elif Seconddice == 4:					
-                    dice4(die2)
-                elif Seconddice == 5:					
-                    dice5(die2)
-                elif Seconddice == 6:					
-                    dice6(die2)
+                match Firstdice:
+                    case "1":					
+                        dice1(die1)
+                    case "2":
+                        dice2(die1)
+                    case "3":					
+                        dice3(die1)
+                    case "4":					
+                        dice4(die1)
+                    case "5":					
+                        dice5(die1)
+                    case "6":					
+                        dice6(die1)
+                match Seconddice:
+                    case "1":					
+                        dice1(die2)
+                    case "2":					
+                        dice2(die2)
+                    case "3":					
+                        dice3(die2)
+                    case "4":					
+                        dice4(die2)
+                    case "5":					
+                        dice5(die2)
+                    case "6":					
+                        dice6(die2)
                 dice_total = Firstdice + Seconddice
                 totalDice_string = "The total of this 2D6 roll is " + str(dice_total)
                 title1 = font.render(totalDice_string, True, (255, 255, 255))
