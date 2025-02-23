@@ -92,6 +92,47 @@ def clearDice():
     pygame.draw.rect(window, white, die2)
     pygame.display.update()
 
+def v_d2x6Throw():
+	clearDice()
+	font = pygame.font.SysFont('arial', 18)
+	title1 = font.render("Rolling 2D6 ...", True, (255, 255, 255))
+	window.blit(title1, (windowWidth/2 - title1.get_width()/2, 20))
+	game_state = "game"
+	
+	Firstdice = random.randint(1,6)
+	Seconddice = random.randint(1,6)
+	print("dice1: ", Firstdice, "dice2: ", Seconddice)
+	match Firstdice:
+		case 1:					
+			dice1(die1)
+		case 2:
+			dice2(die1)
+		case 3:					
+			dice3(die1)
+		case 4:					
+			dice4(die1)
+		case 5:					
+			dice5(die1)
+		case 6:					
+			dice6(die1)
+	match Seconddice:
+		case 1:					
+			dice1(die2)
+		case 2:					
+			dice2(die2)
+		case 3:					
+			dice3(die2)
+		case 4:					
+			dice4(die2)
+		case 5:					
+			dice5(die2)
+		case 6:					
+			dice6(die2)
+	dice_total = Firstdice + Seconddice
+	totalDice_string = "The total of this 2D6 roll is " + str(dice_total)
+	title1 = font.render(totalDice_string, True, (255, 255, 255))
+	window.blit(title1, (windowWidth/2 - title1.get_width()/2, 230))  
+      
 while True:
     if game_state == "main_menu":
        draw_main_menu()
@@ -100,47 +141,10 @@ while True:
             if event.key == pygame.K_ESCAPE or event.key == pygame.K_0:
                 quitGame()
             if event.key == pygame.K_2:
-                clearDice()
-                font = pygame.font.SysFont('arial', 18)
-                title1 = font.render("Rolling 2D6 ...", True, (255, 255, 255))
-                window.blit(title1, (windowWidth/2 - title1.get_width()/2, 20))
-                game_state = "game"
-                
-                Firstdice = random.randint(1,6)
-                Seconddice = random.randint(1,6)
-                print("dice1: ", Firstdice, "dice2: ", Seconddice)
-                match Firstdice:
-                    case "1":					
-                        dice1(die1)
-                    case "2":
-                        dice2(die1)
-                    case "3":					
-                        dice3(die1)
-                    case "4":					
-                        dice4(die1)
-                    case "5":					
-                        dice5(die1)
-                    case "6":					
-                        dice6(die1)
-                match Seconddice:
-                    case "1":					
-                        dice1(die2)
-                    case "2":					
-                        dice2(die2)
-                    case "3":					
-                        dice3(die2)
-                    case "4":					
-                        dice4(die2)
-                    case "5":					
-                        dice5(die2)
-                    case "6":					
-                        dice6(die2)
-                dice_total = Firstdice + Seconddice
-                totalDice_string = "The total of this 2D6 roll is " + str(dice_total)
-                title1 = font.render(totalDice_string, True, (255, 255, 255))
-                window.blit(title1, (windowWidth/2 - title1.get_width()/2, 230))               
-            if event.key == pygame.K_m:
-                game_state = "main_menu"
+                v_d2x6Throw()
+                while True:
+                    if event.key == pygame.K_m:
+                        game_state = "main_menu"
                 
                 
     pygame.display.update()
