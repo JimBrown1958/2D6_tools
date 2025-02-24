@@ -3,7 +3,7 @@
 from tkinter import *
 
 class Application(Frame):
-    """ A gui application with three buttons. """
+    """ A gui application with seven buttons. """
     def __init__(self , master):
         """ Initialise the Frame. """
         super(Application, self).__init__(master)
@@ -11,7 +11,7 @@ class Application(Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        """ Create three buttons that do nothing. """
+        """ Create buttons. """
         # Create first button
         self.bttn1 = Button(self, text="1D6 ")
         self.bttn1.grid()
