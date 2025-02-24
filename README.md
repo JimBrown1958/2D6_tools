@@ -11,7 +11,7 @@ python3 2d6Dice.py
 
 Background
 ==========
-These scripts have been written as I am dabbling in learning Python, so they will be buggy, not efficient, and probably (will) break Python best programming practise.  
+These scripts have been written as I am dabbling with learning Python, so they will be buggy, inefficient, and probably (will) break Python best programming practise.  
 When learning a new programming language, I need to work on a project.  For my style of learning I don't find reading a book, listening to a lecture and then doing some tutorials a very good way for me to absorb a language.  I prefer to learn a bit then do something practical with it and refer back to teaching material when I hit a problem.
 
 Videos of the creation of the game were recommended to my Youtube watch list. 
